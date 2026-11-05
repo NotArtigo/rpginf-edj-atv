@@ -20,6 +20,15 @@ def calcular_dano(ataque, defesa, critico=False):
     Se for um golpe crítico, o dano dobra.
     Exemplos: calcular_dano(18, 3) -> 15    calcular_dano(18, 3, True) -> 30
               calcular_dano(5, 12) -> 1"""
+    
+    if ataque - defesa <= 0:
+        dano = 1
+    else: 
+        dano = ataque - defesa
+    if random.randint(1, 8) == 1:
+        critico = True
+    if critico == True:
+        dano = dano * 2
     # TODO
     raise NotImplementedError
 
