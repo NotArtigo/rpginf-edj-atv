@@ -28,23 +28,27 @@ def calcular_dano(ataque, defesa, critico=False):
     if random.randint(1, 8) == 1:
         critico = True
     if critico == True:
-        dano = dano * 2
-    # TODO
-    raise NotImplementedError
+        dano *= 2
 
 
 def aplicar_dano(vida, dano):
     """Devolve a vida depois do golpe (nunca fica negativa).
     Exemplos: aplicar_dano(60, 15) -> 45    aplicar_dano(10, 15) -> 0"""
-    # TODO
-    raise NotImplementedError
+    vida -= dano
+    if vida < 0:
+        vida = 0
+
+
 
 
 def curar(vida, vida_max, cura=30):
     """Devolve a vida depois de tomar uma poção (nunca passa de vida_max).
     Exemplos: curar(50, 100) -> 80    curar(90, 100) -> 100"""
-    # TODO
-    raise NotImplementedError
+
+    vida += cura
+    if vida > vida_max:
+        vida = vida_max
+
 
 
 def barra_de_vida(vida, vida_max, tamanho=10):
@@ -52,8 +56,15 @@ def barra_de_vida(vida, vida_max, tamanho=10):
         barra_de_vida(60, 100) -> "[######----] 60/100"
     Quantidade de '#':  vida * tamanho // vida_max   (o resto é '-')
     Use um laço for com range(tamanho)."""
-    # TODO
-    raise NotImplementedError
+    barra = ""
+    quant = vida * tamanho // vida_max
+    for i in range(tamanho):
+        if i < quant:
+            barra += "#"
+        else:
+            barra += "-"
+    print(f"[{barra}] {vida}/{vida_max}")
+    
 
 
 def classificar_resultado(vida, vida_max):
@@ -62,8 +73,15 @@ def classificar_resultado(vida, vida_max):
         vida igual a vida_max       -> "Vitória perfeita"
         vida >= metade de vida_max  -> "Vitória"
         senão                       -> "Vitória apertada" """
-    # TODO: use if / elif / else
-    raise NotImplementedError
+    if vida == 0:
+        print("Derrota")
+    elif vida == vida_max:
+        print("Vitória perfeita")
+    elif vida > vida_max / 2:
+        print ("Vitória")
+    else:
+        print("Vitória apertada")
+
 
 
 def ler_acao():

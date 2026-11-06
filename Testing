@@ -1,0 +1,13 @@
+vida = 50
+vida_max = 100
+tamanho = 10
+
+
+barra = ""
+quant = vida * tamanho // vida_max
+for i in range(tamanho):
+    if i < quant:
+        barra += "#"
+    else:
+        barra += "-"
+print(f"[{barra}] {vida}/{vida_max}")
