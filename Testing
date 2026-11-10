@@ -1,13 +1,16 @@
-vida = 50
-vida_max = 100
-tamanho = 10
+ataque = 1
+defesa = 1
+critico = False
 
 
-barra = ""
-quant = vida * tamanho // vida_max
-for i in range(tamanho):
-    if i < quant:
-        barra += "#"
-    else:
-        barra += "-"
-print(f"[{barra}] {vida}/{vida_max}")
+if ataque - defesa <= 0:
+        dano = 1
+else: 
+        dano = ataque - defesa
+if critico == True:
+        if int(ataque * 1.3) - int(defesa * 0.9) <= 0:
+            dano = 1
+        else:
+            dano = int(ataque * 1.3) - int(defesa * 0.9)
+
+print(dano)
