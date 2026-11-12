@@ -16,16 +16,22 @@ def buscar_item(catalogo, nome):
     """Procura o item pelo nome (sem diferenciar maiúsculas).
     Devolve o dicionário do item, ou None se não achar.
     Dica: percorra o catálogo com for e compare item["nome"].lower() com nome.lower()"""
-    # TODO
-    raise NotImplementedError
+
+    nome = input("Digite o nome do item que deseja buscar: ")
+    for item in catalogo:
+        if nome.lower() == item["nome"].lower():
+            return item
+    return None
+
 
 
 def mostrar_catalogo(catalogo):
     """Mostra os itens da loja, numerados a partir de 1, por exemplo:
         1. Poção de Vida      Poção       15 moedas"""
-    # TODO
-    raise NotImplementedError
 
+    for item in catalogo:
+        return f"{item['nome']} {item['tipo']} {item['preco']} moedas"
+    
 
 def mostrar_inventario(heroi):
     """Mostra o ouro e os itens do herói. (PRONTA)"""
